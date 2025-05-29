@@ -1,206 +1,170 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Paolo Malerba | Generative AI Portfolio</title>
-  <!-- Serif font -->
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet" />
+
   <style>
     :root {
-      /* Professional & inspiring palette */
-      --primary: #1B4F72;   /* deep steel blue */
-      --accent:  #4F8A8B;   /* soft teal */
-      --text-dark: #212121;
+      --primary: #4f8a8b;     /* teal accent */
+      --primary-dark: #1b4f72; /* deep professional blue */
       --bg-light: #ffffff;
-      --bg-muted: #F2F6F7;  /* very light teal‑tinted gray */
+      --text-dark: #1b1b1b;
+      --radius: 0.75rem;
     }
 
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+      font-family: 'Merriweather', serif;
     }
 
     body {
-      font-family: 'Merriweather', serif;
       background: var(--bg-light);
       color: var(--text-dark);
       line-height: 1.6;
     }
 
     a {
-      color: var(--accent);
+      color: var(--primary-dark);
       text-decoration: none;
     }
 
-    header {
-      background: var(--primary);
-      color: var(--bg-light);
-      padding: 1rem 2rem;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+    h1, h2, h3 {
+      line-height: 1.3;
+      margin-bottom: 0.5em;
     }
 
-    header nav a {
-      margin-left: 1.5rem;
-      font-weight: 700;
-      transition: opacity 0.2s ease;
-    }
-
-    header nav a:hover {
-      opacity: 0.85;
-    }
-
-    /* Hero section */
+    /* Hero */
     .hero {
-      position: relative;      /* for absolute avatar */
-      width: 100%;            /* full‑bleed */
-      max-width: none;
-      margin: 0;
+      position: relative;
+      width: 100%;
       min-height: 70vh;
       display: flex;
       flex-direction: column;
-      align-items: flex-start; /* left‑align content */
       justify-content: center;
-      text-align: left;
-      padding: 4rem 2rem 4rem 6vw; /* extra left padding */
-      background: linear-gradient(rgba(27,79,114,0.75), rgba(27,79,114,0.75)),
-                  url('https://github.com/paolomalerba/graph-ai-portfolio-paolo-malerba/blob/main/Image%20background%20GRAPH%20COURSE%20AI.jpg?raw=true')
-                  center/cover no-repeat;
-      color: var(--bg-light);
+      align-items: flex-start;
+      padding: 4rem 2rem 4rem 6vw;
+      color: #fff;
+      background: linear-gradient(rgba(27, 79, 114, 0.8), rgba(27, 79, 114, 0.8)),
+        url('https://github.com/paolomalerba/graph-ai-portfolio-paolo-malerba/blob/main/Image%20background%20GRAPH%20COURSE%20AI.jpg?raw=true') center/cover no-repeat;
     }
 
     .hero h1 {
-      font-size: clamp(2.5rem, 6vw, 5rem);
-      margin-bottom: 0.5rem;
+      font-size: clamp(2.5rem, 5vw, 4rem);
       font-weight: 700;
+      margin-bottom: 0.5rem;
     }
 
     .hero p {
-      font-size: 1.2rem;
-      max-width: 600px;
+      font-size: clamp(1.125rem, 2vw, 1.25rem);
+      max-width: 42ch;
     }
 
-    /* Avatar in hero */
-    .hero .avatar {
+    .avatar {
       position: absolute;
       top: 2rem;
       right: 2rem;
-      width: 280px; /* doubled size */
+      width: 280px;
       height: 280px;
       border-radius: 50%;
       object-fit: cover;
       border: 4px solid var(--bg-light);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
     }
 
-    /* Generic section styling (exclude hero so it stays full‑width) */
-    section:not(.hero) {
-      padding: 5rem 2rem;
-      max-width: 900px;
+    /* Layout helpers */
+    .container {
+      max-width: 1100px;
       margin: 0 auto;
+      padding: 4rem 2rem;
     }
 
-    section:nth-of-type(even):not(.hero) {
-      background: var(--bg-muted);
-    }
-
-    h2 {
-      font-size: 2rem;
-      margin-bottom: 1.5rem;
-      color: var(--primary);
-    }
-
-    /* Button styles */
+    /* Buttons */
     .btn {
       display: inline-block;
-      padding: 0.75rem 1.5rem;
-      border: 2px solid var(--accent);
-      border-radius: 0.375rem;
-      color: var(--accent);
-      transition: background 0.3s ease, color 0.3s ease;
+      padding: 0.65rem 1.5rem;
+      border-radius: var(--radius);
+      border: 2px solid var(--primary-dark);
+      color: var(--primary-dark);
       font-weight: 600;
+      transition: background 0.25s, color 0.25s;
     }
 
     .btn:hover {
-      background: var(--accent);
-      color: var(--bg-light);
+      background: var(--primary-dark);
+      color: #fff;
     }
 
     .btn-group {
       display: flex;
       flex-wrap: wrap;
       gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    /* Submissions */
+    .submissions {
+      list-style: none;
+      display: grid;
+      gap: 2rem;
       margin-top: 2rem;
+      padding: 0;
     }
 
-    .submissions ul {
-      list-style: disc inside;
-      padding-left: 1rem;
+    .submission-card {
+      border: 1px solid #ddd;
+      border-radius: var(--radius);
+      padding: 1.5rem 1.75rem;
+      background: #fdfdfd;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
     }
 
-    footer {
-      background: var(--primary);
-      color: var(--bg-light);
-      text-align: center;
-      padding: 2rem 1rem;
-      font-size: 0.9rem;
+    .submission-card h3 {
+      color: var(--primary-dark);
+      margin-bottom: 0.5rem;
     }
 
-    /* Lighten “dark‑mode” to prevent black side bars */
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --bg-light: #ffffff;   /* keep white background */
-        --text-dark: #212121;  /* dark text for contrast */
-        --bg-muted: #F2F6F7;  /* light muted still */
-      }
-      body {
-        background: var(--bg-light);
-        color: var(--text-dark);
-      }
-      section:nth-of-type(even):not(.hero) {
-        background: var(--bg-muted);
+    .submission-card p {
+      margin-bottom: 1rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 700px) {
+      .avatar {
+        width: 180px;
+        height: 180px;
       }
     }
   </style>
 </head>
 <body>
-
-  <header>
-    <div class="logo">Paolo Malerba</div>
-    <nav>
-      <a href="#about">About me</a>
-      <a href="#course">About the course</a>
-      <a href="#submissions">Weekly submissions</a>
-    </nav>
-  </header>
-
-  <section class="hero">
-    <img src="https://github.com/paolomalerba/graph-ai-portfolio-paolo-malerba/blob/main/WhatsApp%20Image%202025-05-15%20at%2019.36.13.jpeg?raw=true" alt="Paolo Malerba" class="avatar">
+  <!-- Hero Section -->
+  <section class="hero" id="top">
+    <img src="https://github.com/paolomalerba/graph-ai-portfolio-paolo-malerba/blob/main/WhatsApp%20Image%202025-05-15%20at%2019.36.13.jpeg?raw=true" alt="Paolo Malerba portrait" class="avatar" />
     <h1>Hello, I'm Paolo</h1>
-    <p>Medical Doctor, researcher &amp; PhD candidate exploring how Generative AI can amplify impact in global health and humanitarian research.</p>
+    <p>PhD candidate and physician exploring Generative AI for impactful research and healthcare innovations.</p>
   </section>
 
-  <section id="about">
-    <h2>About me</h2>
+  <!-- About Me -->
+  <section id="about-me" class="container">
+    <h2>About Me</h2>
     <p>I am a PhD candidate at CRIMEDIM (Research Center for Disaster Medicine, Humanitarian Aid, and Global Health) with a medical background and a specialization in Internal Medicine. My research focuses on the destructive impact of armed conflicts on health systems and possible solutions to ensure continuity of care for conflict-affected populations. Passionate about social justice, I advocate for health as a fundamental human right, particularly for marginalized populations.</p>
-
-    <!-- Button group -->
     <div class="btn-group">
-      <a href="https://drive.google.com/file/d/18QGA8LHLSe3hUJ2KlfvHD_AQU4JYr6XQ/view?usp=sharing" class="btn" target="_blank" rel="noopener">Download CV</a>
-      <a href="https://www.linkedin.com/in/paolo-malerba-30a4a9239/" class="btn" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="https://open.spotify.com/user/1166715646?si=cc77af2664154a1c" class="btn" target="_blank" rel="noopener">Spotify</a>
+      <a class="btn" href="https://drive.google.com/file/d/18QGA8LHLSe3hUJ2KlfvHD_AQU4JYr6XQ/view?usp=sharing" target="_blank" rel="noopener">Download CV</a>
+      <a class="btn" href="https://www.linkedin.com/in/paolo-malerba-30a4a9239/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="https://open.spotify.com/user/1166715646?si=cc77af2664154a1c" target="_blank" rel="noopener">Spotify</a>
     </div>
   </section>
 
-  <section id="course">
-    <h2>About the course</h2>
+  <!-- About the Course -->
+  <section id="about-course" class="container">
+    <h2>About the Course</h2>
     <p><strong>Generative AI for Work &amp; Research Productivity</strong> is an 8‑week live online certification focused on no‑code AI tools for task automation and research support. Key outcomes include:</p>
     <ul>
       <li>Automate document, spreadsheet, and data workflows</li>
@@ -210,24 +174,49 @@
     </ul>
   </section>
 
-  <section id="submissions" class="submissions">
-    <h2>My weekly submissions</h2>
-    <p>Links to each week’s project will appear here as the course progresses:</p>
-    <ul>
-      <li>Week&nbsp;1 – Coming soon</li>
-      <li>Week&nbsp;2 – Coming soon</li>
-      <li>Week&nbsp;3 – Coming soon</li>
-      <li>Week&nbsp;4 – Coming soon</li>
-      <li>Week&nbsp;5 – Coming soon</li>
-      <li>Week&nbsp;6 – Coming soon</li>
-      <li>Week&nbsp;7 – Coming soon</li>
-      <li>Week&nbsp;8 – Coming soon</li>
-    </ul>
-  </section>
+  <!-- Weekly Submissions -->
+  <section id="submissions" class="container">
+    <h2>My Weekly Submissions</h2>
+    <ul class="submissions">
+      <!-- Workshop 1 -->
+      <li class="submission-card">
+        <h3>Workshop&nbsp;1 – This Website!</h3>
+        <p>Designed and developed this responsive portfolio site to showcase my course projects.</p>
+        <a class="btn" href="#top">View Site</a>
+      </li>
 
-  <footer>
-    © 2025 Paolo Malerba. Built with passion and lots of coffee.
-  </footer>
+      <!-- Workshop 2 -->
+      <li class="submission-card">
+        <h3>Workshop&nbsp;2 – Automated Data Analysis</h3>
+        <p>Analyzed Gapminder data to explore relationships between global indicators using AI‑driven tools.</p>
+        <a class="btn" href="https://drive.google.com/file/d/1BG0m4Rja5rXS1nlGj7qv-fVl9DXHXpb6/view?usp=sharing" target="_blank" rel="noopener">Read Report</a>
+      </li>
 
-</body>
-</html>
+      <!-- Workshop 3 -->
+      <li class="submission-card">
+        <h3>Workshop&nbsp;3 – Analyzing Job Market Data with LLM APIs</h3>
+        <p>Explored job listings datasets and used language‑model APIs to extract insights into market demand, emerging skills and hiring trends.</p>
+        <a class="btn" href="https://drive.google.com/file/d/1tmRpYu6H9SbZpvXH_v02VDyqY_jUF_pt/view?usp=sharing" target="_blank" rel="noopener">Read Report</a>
+      </li>
+
+      <!-- Workshop 4 -->
+      <li class="submission-card">
+        <h3>Workshop&nbsp;4 – Project Coming Soon</h3>
+        <p>Content will be added after completion.</p>
+      </li>
+
+      <!-- Workshop 5 -->
+      <li class="submission-card">
+        <h3>Workshop&nbsp;5 – Project Coming Soon</h3>
+        <p>Content will be added after completion.</p>
+      </li>
+
+      <!-- Workshop 6 -->
+      <li class="submission-card">
+        <h3>Workshop&nbsp;6 – Project Coming Soon</h3>
+        <p>Content will be added after completion.</p>
+      </li>
+
+      <!-- Workshop 7 -->
+      <li class="submission-card">
+        <h3>Workshop&nbsp;7 – Project Coming Soon</
